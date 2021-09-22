@@ -1,40 +1,16 @@
-<template>
-  <v-app>
+<v-app>
     <!-- Header -->
-    <v-app-bar class="grey lighten-5" height="150" app>
-      <img
-        class="mx-2"
-        src="https://sportsbar-happyland.at/wp-content/uploads/2017/01/sportsbar_Happyland_Klosterneuburg.png"
-        style="height:100px;"
-      />
-      <span
-        class="text-truncate text-h4 black--text darken-1"
-        style="font-family: Poppins"
-        >Viel Bewegung regt auch den Appetit an</span
-      >
-      <!--  -->
-      <v-spacer></v-spacer>
+    <v-app-bar class="blue" app>
+      <!-- ||| -->
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="white--text"
+      ></v-app-bar-nav-icon>
 
-      <!-- LINK -->
-      <!-- Groß -->
-      <v-row align="center" justify="space-around">
-        <router-link to="/" exact>
-          <v-btn>Home</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Speisekarte</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Über uns</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Infos</v-btn>
-        </router-link>
-      </v-row>
+      <span class="white--text title">Layout Demo</span>
     </v-app-bar>
 
     <!-- Navigation -->
-    <!-- Kleiner -->
     <v-navigation-drawer
       app
       hide-overlay
@@ -56,10 +32,6 @@
 
       <v-divider></v-divider>
       <!-- V-Link -->
-
-      <v-btn class="ma-2" outlined fab color="teal">
-        <v-icon>mdi-format-list-bulleted-square</v-icon>
-      </v-btn>
       <v-list-item-group class="active-class">
         <v-list-item>
           <v-list-item-title>Home</v-list-item-title>
@@ -79,7 +51,8 @@
     <!-- Main -->
     <v-main>
       <h1 >Team</h1>
-
+      
+       
       <p class="text-justify">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -93,20 +66,3 @@
       </p>
     </v-main>
   </v-app>
-</template>
-
-<script>
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-};
-</script>
-
-<style>
-v-btn {
-  text-decoration: none;
-}
-</style>
