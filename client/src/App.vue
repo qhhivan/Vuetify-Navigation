@@ -1,23 +1,71 @@
 <template>
   <v-app>
-    <v-navigation-drawer class="green" app>
-      <span class="white--text title">v-navigation-drawer</span>
-    </v-navigation-drawer>
-    <v-system-bar class="pink" app>
-      <span class="white--text title">v-system-bar</span>
-    </v-system-bar>
-    <v-app-bar class="yellow" app>
-      <span class="title">v-app-bar</span>
+    <!-- Header -->
+    <v-app-bar class="blue" app>
+      <!-- ||| -->
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="white--text"
+      ></v-app-bar-nav-icon>
+
+      <span class="white--text title">Layout Demo</span>
     </v-app-bar>
-    <v-main class="blue">
-      <span class="white--text title">v-main</span>
+
+    <!-- Navigation -->
+    <v-navigation-drawer
+      app
+      hide-overlay
+      disable-resize-watcher
+      v-model="drawer"
+    >
+      <!-- link - header -->
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6">
+            Menu
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Please select
+          </v-list-item-subtitle>
+        </v-list-item-content>
+        <v-btn text @click="drawer = false">Close</v-btn>
+      </v-list-item>
+
+      <v-divider></v-divider>
+      <!-- V-Link -->
+      <v-list-item-group class="active-class">
+        <v-list-item>
+          <v-list-item-title>Home</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>Products</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>Team</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>About</v-list-item-title>
+        </v-list-item>
+      </v-list-item-group>
+    </v-navigation-drawer>
+
+    <!-- Main -->
+    <v-main>
+      <h1 class="h1', 'Heading 1', '6rem', '300', '-.015625em">Team</h1>
+      
+       
+      <p class="text-justify">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+        rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </p>
     </v-main>
-    <v-footer class="purple" app>
-      <span class="white--text title mx-auto">v-footer</span>
-    </v-footer>
-    <v-bottom-navigation class="cyan" app>
-      <span class="white--text title">v-bottom-navigation</span>
-    </v-bottom-navigation>
   </v-app>
 </template>
 
