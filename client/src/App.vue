@@ -1,84 +1,67 @@
 <template>
   <v-app>
-    <!-- Header -->
+    <!-- NAVBAR -->
     <v-app-bar class="grey lighten-5" height="150" app>
+      <!-- LOGO -->
       <img
         class="mx-2"
         src="https://sportsbar-happyland.at/wp-content/uploads/2017/01/sportsbar_Happyland_Klosterneuburg.png"
         style="height:100px;"
       />
+
+      <!-- SLOGAN -->
       <span
         class="text-truncate text-h4 black--text darken-1"
         style="font-family: Poppins"
         >Viel Bewegung regt auch den Appetit an</span
       >
-      <!--  -->
+
+      <!-- Damit die Buttons aussen sind -->
       <v-spacer></v-spacer>
 
-      <!-- LINK -->
-      <!-- Groß -->
-      <v-row align="center" justify="space-around">
-        <router-link to="/" exact>
-          <v-btn>Home</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Speisekarte</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Über uns</v-btn>
-        </router-link>
-        <router-link to="/" exact>
-          <v-btn>Infos</v-btn>
-        </router-link>
-      </v-row>
+      <!-- BEI NORMALER GRÖSSE LG+ -->
+      <v-btn
+        class="ma-3 hidden-md-and-down"
+        link
+        v-for="i in links"
+        :key="i.name"
+        :to="i.route"
+        active-class="orange darken-1--text lighten-2"
+      >
+        {{ i.name }}
+      </v-btn>
+
+      <!-- BEI KLEINER ANZEIGE AB MD -->
+      <v-app-bar-nav-icon
+        @click="sz = !sz"
+        class="orange darken-1--text lighten 3 d-lg-none"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
 
-    <!-- Navigation -->
-    <!-- Kleiner -->
+    <!-- MENU -->
     <v-navigation-drawer
       app
       hide-overlay
+      right
       disable-resize-watcher
-      v-model="drawer"
+      class="mr-0 d-lg-none"
+      v-model="sz"
     >
-      <!-- link - header -->
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Menu
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Please select
-          </v-list-item-subtitle>
-        </v-list-item-content>
-        <v-btn text @click="drawer = false">Close</v-btn>
-      </v-list-item>
-
-      <v-divider></v-divider>
-      <!-- V-Link -->
-
-      <v-btn class="ma-2" outlined fab color="teal">
-        <v-icon>mdi-format-list-bulleted-square</v-icon>
-      </v-btn>
-      <v-list-item-group class="active-class">
-        <v-list-item>
-          <v-list-item-title>Home</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Products</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>Team</v-list-item-title>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-title>About</v-list-item-title>
-        </v-list-item>
+      <v-btn text @click="sz = false">Close</v-btn>
+      <v-list-item-group class="hidden-lg-and-up">
+        <v-list-item
+          link
+          v-for="i in links"
+          :key="i.name"
+          :to="i.route"
+          active-class="orange darken-1--text lighten-2"
+          >{{ i.name }}</v-list-item
+        >
       </v-list-item-group>
     </v-navigation-drawer>
 
-    <!-- Main -->
     <v-main>
-      <h1 >Team</h1>
+      <h1>Team</h1>
 
       <p class="text-justify">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
@@ -100,13 +83,13 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    sz: false,
+    links: [
+      { name: 'Home', route: '/' },
+      { name: 'About', route: '/about' },
+      { name: 'Speisekarte', route: '/speisekarte' },
+      { name: 'Team', route: '/team' },
+    ],
   }),
 };
 </script>
-
-<style>
-v-btn {
-  text-decoration: none;
-}
-</style>
